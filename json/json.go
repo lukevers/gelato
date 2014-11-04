@@ -1,9 +1,9 @@
 package json
 
 import (
+	j "encoding/json"
 	"net/http"
 	"strconv"
-	j "encoding/json"
 )
 
 type JsonWriter struct {
@@ -23,7 +23,7 @@ func WriteJson(jw JsonWriter) {
 		errs = "\"" + jw.Error.Error() + "\""
 	} else {
 		// We set it to "null" instead of "nil" because
-		// "nil" is not proper JSON. 
+		// "nil" is not proper JSON.
 		errs = "null"
 	}
 
@@ -32,11 +32,11 @@ func WriteJson(jw JsonWriter) {
 	if err != nil {
 		// If we have an error, report it.
 		jw.Status = 500
-		jw.Error  = err
-		body      = []byte("null")
+		jw.Error = err
+		body = []byte("null")
 	}
 
-	json := "{\"Status\": "+strconv.Itoa(jw.Status)+", \"Error\": "+errs+", \"Body\": "+string(body)+"}"
+	json := "{\"Status\": " + strconv.Itoa(jw.Status) + ", \"Error\": " + errs + ", \"Body\": " + string(body) + "}"
 
 	// Write json
 	jw.Rw.Write([]byte(json))
