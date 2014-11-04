@@ -5,6 +5,7 @@ import (
 	"flag"
 	"github.com/gorilla/mux"
 	"github.com/lukevers/gelato/json"
+	"github.com/lukevers/golem"
 	"net/http"
 	"strconv"
 )
@@ -29,6 +30,7 @@ func main() {
 	})
 
 	// Start HTTP server
+	golem.Infof("Starting HTTP server on %s", *host+":"+strconv.Itoa(*port))
 	http.Handle("/", r)
 	http.ListenAndServe(*host+":"+strconv.Itoa(*port), nil)
 }
