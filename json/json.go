@@ -3,13 +3,14 @@ package json
 import (
 	"net/http"
 	"strconv"
+	j "encoding/json"
 )
 
 type JsonWriter struct {
 	Status int
 	Rw     http.ResponseWriter
 	Error  error
-	Body   string //interface{}
+	Body   interface{}
 }
 
 func WriteJson(jw JsonWriter) {
@@ -17,18 +18,25 @@ func WriteJson(jw JsonWriter) {
 	jw.Rw.Header().Set("Content-Type", "application/json; charset=utf-8")
 
 	// Figure out the error
-	var err string
+	var errs string
 	if jw.Error != nil {
-		err = "\"" + jw.Error.Error() + "\""
+		errs = "\"" + jw.Error.Error() + "\""
 	} else {
-		err = "nil"
+		// We set it to "null" instead of "nil" because
+		// "nil" is not proper JSON. 
+		errs = "null"
 	}
 
 	// Figure out body json
-	body := jw.Body
+	body, err := j.Marshal(jw.Body)
+	if err != nil {
+		// If we have an error, report it.
+		jw.Status = 500
+		jw.Error  = err
+		body      = []byte("null")
+	}
 
-	// Create json
-	json := "{\"status\": "+strconv.Itoa(jw.Status)+", \"error\": "+err+", \"body\": "+body+"}"
+	json := "{\"Status\": "+strconv.Itoa(jw.Status)+", \"Error\": "+errs+", \"Body\": "+string(body)+"}"
 
 	// Write json
 	jw.Rw.Write([]byte(json))

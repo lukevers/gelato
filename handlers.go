@@ -10,6 +10,12 @@ func HandleRoot(w http.ResponseWriter, req *http.Request) {
 		Status: 200,
 		Rw:     w,
 		Error:  nil,
-		Body:   "{}",
+		Body:   struct{
+			Test string
+			Test2 string
+		}{
+			"wee",
+			"weeeee!",
+		},
 	})
 }
