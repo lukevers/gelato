@@ -16,6 +16,16 @@ func main() {
 	// Parse flags
 	flag.Parse()
 
+	// Check if we want to generate a config
+	if *genc {
+		// Use the path from our "conf" flag
+		err := config.Gen(*conf)
+		if err != nil {
+			golem.Warnf("Could not generate config file: %s", err)
+			os.Exit(1)
+		}
+	}
+
 	// Load configuration file
 	err, _ := config.Load(*conf)
 	if err != nil {
