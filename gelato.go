@@ -4,15 +4,24 @@ import (
 	"errors"
 	"flag"
 	"github.com/gorilla/mux"
+	"github.com/lukevers/gelato/config"
 	"github.com/lukevers/gelato/json"
 	"github.com/lukevers/golem"
 	"net/http"
+	"os"
 	"strconv"
 )
 
 func main() {
 	// Parse flags
 	flag.Parse()
+
+	// Load configuration file
+	err, _ := config.Load(*conf)
+	if err != nil {
+		golem.Warnf("Could not load config file: %s", err)
+		os.Exit(1)
+	}
 
 	// Create HTTP server
 	r := mux.NewRouter()
