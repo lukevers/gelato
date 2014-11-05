@@ -40,3 +40,29 @@ Specify the webserver port that you want gelato to listen on. The default port i
 #### `--host [host]`
 
 Specify the webserver host that you want gelato to listen on. The default host is `0.0.0.0`.
+
+## API Points
+
+By default, gelato uses the same format for each API point. Every response will look similar to this, but with a different `Body`. All responses are valid JSON.
+
+```json
+{
+	"Status": 200, // HTTP Status Code
+	"Error": null, // A string if not null
+	"Body": {
+		// Body
+	}
+}
+```
+
+#### `/players`
+
+The body of the response contains three fields. 
+
+```json
+"Body": {
+	"NumPlayers": 1,
+	"MaxPlayers": 20,
+	"OnlinePlayers": ["player1"] // If no players, this is null
+}
+```
