@@ -2,13 +2,13 @@
 
 A vanilla Minecraft HTTP JSON server.
 
-## Building
+# Building
 
-#### 0. Before You Build
+### 0. Before You Build
 
 Make sure you have [Go](http://golang.org/) installed, and make sure you have set your [$GOPATH](http://golang.org/doc/code.html#GOPATH) properly, or it will prove difficult to build.
 
-#### 1. Get The Code
+### 1. Get The Code
 
 Start by cloning the repository and getting the dependencies.
 
@@ -17,13 +17,13 @@ git clone https://github.com/lukevers/gelato
 go get
 ```
 
-#### 2. Build
+### 2. Build
 
 ```bash
 go build
 ```
 
-## Flags
+# Flags
 
 #### `--conf [path/to/gelato.json]`
 
@@ -41,7 +41,7 @@ Specify the webserver port that you want gelato to listen on. The default port i
 
 Specify the webserver host that you want gelato to listen on. The default host is `0.0.0.0`.
 
-## API Points
+# API Points
 
 By default, gelato uses the same format for each API point. Every response will look similar to this, but with a different `Body`. All responses are valid JSON, and the comments in these blocks are for informational purposes.
 
@@ -55,7 +55,10 @@ By default, gelato uses the same format for each API point. Every response will 
 }
 ```
 
+## Table of Contents
+
 [1. Server Information](#server)
+
 [2. Player Information](#players)
 
 
