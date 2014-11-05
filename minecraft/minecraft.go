@@ -5,18 +5,20 @@ import (
 )
 
 type Server struct {
-	RconHost string
-	RconPort int
-	RconPass string
-	mc       mcgorcon.Client
+	Host      string
+	RconPass  string
+	RconPort  int
+	QueryPort int
+	mc        mcgorcon.Client
 }
 
 // Create returns a Server and tries to connect
-func Create(host string, port int, pass string) (s *Server) {
+func Create(host, pass string, RconPort, QueryPort int) (s *Server) {
 	s = &Server{
-		RconHost: host,
-		RconPort: port,
-		RconPass: pass,
+		Host:      host,
+		RconPass:  pass,
+		RconPort:  RconPort,
+		QueryPort: QueryPort,
 	}
 
 	go s.connect()
@@ -31,7 +33,7 @@ func (s *Server) connect() {
 	var err error
 
 	// Try to connect to the Minecraft server
-	s.mc, err = mcgorcon.Dial(s.RconHost, s.RconPort, s.RconPass)
+	s.mc, err = mcgorcon.Dial(s.Host, s.RconPort, s.RconPass)
 	if err != nil {
 		// Try reconnecting in 15 seconds
 	}

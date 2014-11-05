@@ -37,7 +37,7 @@ func main() {
 	}
 
 	// Create a Minecraft server
-	server = minecraft.Create(config.RconHost, config.RconPort, config.RconPass)
+	server = minecraft.Create(config.Host, config.RconPass, config.RconPort, config.QueryPort)
 
 	// Create HTTP server
 	r := mux.NewRouter()
