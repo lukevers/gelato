@@ -5,24 +5,37 @@ import (
 	"net/http"
 )
 
-func HandleRoot(w http.ResponseWriter, req *http.Request) {
+// -----
+// HandlePlayers
+//
+//   - Max Players
+//   - Online Players
+//   - Number of Online Players
+//
+// -----
+func HandlePlayers(w http.ResponseWriter, req *http.Request) {
+	// Query server
+	stat, err := server.Query.Full()
+
+	// Set status
+	status := 200
+	if err != nil {
+		status = 500
+	}
+
+	// Write JSON
 	json.WriteJson(json.JsonWriter{
-		Status: 200,
+		Status: status,
 		Rw:     w,
-		Error:  nil,
-		Body: struct {
-			Test  string
-			Test2 string
+		Error:  err,
+		Body:   struct{
+			NumPlayers    int
+			MaxPlayers    int
+			OnlinePlayers []string
 		}{
-			"wee",
-			"weeeee!",
+			stat.NumPlayers,
+			stat.MaxPlayers,
+			stat.Players,
 		},
 	})
-}
-
-// Handles "/players"
-func HandlePlayers(w http.ResponseWriter, req *http.Request) {
-	response, _ := server.Raw("list")
-
-	w.Write([]byte(response))
 }

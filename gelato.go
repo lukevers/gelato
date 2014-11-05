@@ -43,8 +43,7 @@ func main() {
 	r := mux.NewRouter()
 
 	// Setup routes
-	r.HandleFunc("/", HandleRoot)
-	r.HandleFunc("/players", HandlePlayers)
+	r.HandleFunc("/players", HandlePlayers).Methods("GET")
 
 	// Handle Other (all 404s)
 	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

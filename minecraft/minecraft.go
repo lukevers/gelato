@@ -2,6 +2,7 @@ package minecraft
 
 import (
 	"github.com/lukevers/mcgorcon"
+	"github.com/lukevers/mcgoquery"
 )
 
 type Server struct {
@@ -9,7 +10,8 @@ type Server struct {
 	RconPass  string
 	RconPort  int
 	QueryPort int
-	mc        mcgorcon.Client
+	Query     *mcgoquery.Client
+	Rcon      mcgorcon.Client
 }
 
 // Create returns a Server and tries to connect
@@ -32,8 +34,14 @@ func Create(host, pass string, RconPort, QueryPort int) (s *Server) {
 func (s *Server) connect() {
 	var err error
 
-	// Try to connect to the Minecraft server
-	s.mc, err = mcgorcon.Dial(s.Host, s.RconPort, s.RconPass)
+	// Try to connect to the Minecraft server Rcon
+	s.Rcon, err = mcgorcon.Dial(s.Host, s.RconPort, s.RconPass)
+	if err != nil {
+		// Try reconnecting in 15 seconds
+	}
+
+	// Try to connect to the Minecraft server Query
+	s.Query, err = mcgoquery.Create(s.Host, s.QueryPort)
 	if err != nil {
 		// Try reconnecting in 15 seconds
 	}
@@ -41,5 +49,5 @@ func (s *Server) connect() {
 
 // Raw sends a raw command to the Minecraft server.
 func (s *Server) Raw(command string) (string, error) {
-	return s.mc.SendCommand(command)
+	return s.Rcon.SendCommand(command)
 }
