@@ -44,6 +44,7 @@ func main() {
 
 	// Setup routes
 	r.HandleFunc("/players", HandlePlayers).Methods("GET")
+	r.HandleFunc("/server", HandleServerInfo).Methods("GET")
 
 	// Handle Other (all 404s)
 	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
