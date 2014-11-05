@@ -6,9 +6,9 @@ import (
 )
 
 type Config struct {
-	Host     string
-	Port     int
-	Password string
+	RconHost string
+	RconPort int
+	RconPass string
 }
 
 // Generate a new config file
@@ -21,9 +21,9 @@ func Gen(path string) error {
 
 	// Prettify Json
 	j, err := json.MarshalIndent(Config{
-		Host:     "localhost",
-		Port:     25575,
-		Password: "password",
+		RconHost: "localhost",
+		RconPort: 25575,
+		RconPass: "password",
 	}, "", "  ")
 	if err != nil {
 		return err

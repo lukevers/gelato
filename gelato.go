@@ -6,11 +6,14 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/lukevers/gelato/config"
 	"github.com/lukevers/gelato/json"
+	"github.com/lukevers/gelato/minecraft"
 	"github.com/lukevers/golem"
 	"net/http"
 	"os"
 	"strconv"
 )
+
+var server *minecraft.Server
 
 func main() {
 	// Parse flags
@@ -27,17 +30,21 @@ func main() {
 	}
 
 	// Load configuration file
-	err, _ := config.Load(*conf)
+	err, config := config.Load(*conf)
 	if err != nil {
 		golem.Warnf("Could not load config file: %s", err)
 		os.Exit(1)
 	}
+
+	// Create a Minecraft server
+	server = minecraft.Create(config.RconHost, config.RconPort, config.RconPass)
 
 	// Create HTTP server
 	r := mux.NewRouter()
 
 	// Setup routes
 	r.HandleFunc("/", HandleRoot)
+	r.HandleFunc("/players", HandlePlayers)
 
 	// Handle Other (all 404s)
 	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

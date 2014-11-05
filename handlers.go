@@ -19,3 +19,10 @@ func HandleRoot(w http.ResponseWriter, req *http.Request) {
 		},
 	})
 }
+
+// Handles "/players"
+func HandlePlayers(w http.ResponseWriter, req *http.Request) {
+	response, _ := server.Raw("list")
+
+	w.Write([]byte(response))
+}
