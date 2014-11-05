@@ -55,13 +55,6 @@ By default, gelato uses the same format for each API point. Every response will 
 }
 ```
 
-## Table of Contents
-
-[1. Server Information](#server)
-
-[2. Player Information](#players)
-
-
 ### /server
 
 The API point `/server` contains general information about the server. Information about the max number of players the server allows, and the number of current online players are included in this API point for convenience, but the `/players` API point is player specific and includes a list of current online players. The body of the response could be similar to this:
