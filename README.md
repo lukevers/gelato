@@ -43,7 +43,7 @@ Specify the webserver host that you want gelato to listen on. The default host i
 
 # API Points
 
-By default, gelato uses the same format for each API point. Every response will look similar to this, but with a different `Body`. All responses are valid JSON, and the comments in these blocks are for informational purposes.
+By default, gelato uses the same format for each API point. Every response will look similar to this, but with a different `Body`. All responses are valid JSON, and the comments in these blocks are for informational purposes in this README only.
 
 ```json
 {
