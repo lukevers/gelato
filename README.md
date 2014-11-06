@@ -94,3 +94,13 @@ The API point `/players` contains information about current online players. It a
 	"OnlinePlayers": ["player1"] // If no players, this is null
 }
 ```
+
+### /players/online
+
+The API point `/players/online` contains a string array of current online players. If there are no players online the result is null. The body of the response could be similar to this:
+
+```json
+"Body": {
+	"OnlinePlayers": ["player1"] // If no players, this is null
+}
+```

@@ -41,3 +41,34 @@ func HandlePlayers(w http.ResponseWriter, req *http.Request) {
 		},
 	})
 }
+
+// -----
+// HandleOnlinePlayers
+//
+// `/players/online`
+//
+//   - Online Players
+//
+// -----
+func HandleOnlinePlayers(w http.ResponseWriter, req *http.Request) {
+	// Query server
+	stat, err := server.Query.Full()
+
+	// Set status
+	status := 200
+	if err != nil {
+		status = 500
+	}
+
+	// Write JSON
+	json.WriteJson(json.JsonWriter{
+		Status: status,
+		Rw:     w,
+		Error:  err,
+		Body: struct {
+			OnlinePlayers []string
+		}{
+			stat.Players,
+		},
+	})
+}

@@ -46,8 +46,11 @@ func main() {
 	// Create HTTP server
 	r := mux.NewRouter()
 
-	// Setup routes
+	// Players API Routes
 	r.HandleFunc("/players", api.HandlePlayers).Methods("GET")
+	r.HandleFunc("/players/online", api.HandleOnlinePlayers).Methods("GET")
+
+	// Server API Routes
 	r.HandleFunc("/server", api.HandleServer).Methods("GET")
 
 	// Handle Other (all 404s)
