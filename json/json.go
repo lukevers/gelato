@@ -55,7 +55,7 @@ func WriteJson(jw JsonWriter) {
 		json = string(body)
 	} else {
 		// Put together full JSON string
-		json = "{\"Status\": " + strconv.Itoa(jw.Status) + ", \"Error\": " + errs + ", \"Body\": " + string(body) + "}"
+		json = "{\"Status\":" + strconv.Itoa(jw.Status) + ",\"Error\":" + errs + ",\"Body\":" + string(body) + "}"
 	}
 
 	// Write JSON
