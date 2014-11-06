@@ -58,14 +58,14 @@ By default, gelato uses the same format for each API point. Every response will 
 ## Table of Contents
 
 * [/server](#server)
-  * [/server/game-type](#server-game-type)
-  * [/server/game-id](#server-game-id)
-  * [/server/version](#server-version)
-  * [/server/map](#server-map)
-  * [/server/max-players](#server-max-players)
-  * [/server/num-players](#server-num-players)
+  * [/server/gametype](#servergametype)
+  * [/server/gameid](#servergameid)
+  * [/server/version](#serverversion)
+  * [/server/map](#servermap)
+  * [/server/maxplayers](#servermaxplayers)
+  * [/server/numplayers](#servernumplayers)
 * [/players](#players)
-  * [/players/online](#players-online)
+  * [/players/online](#playersonline)
 
 ### /server
 
@@ -82,6 +82,31 @@ The API point `/server` contains general information about the server. Informati
 	"Motd": "A Minecraft Server"
 }
 ```
+
+### /server/gametype
+
+todo
+
+### /server/gameid
+
+todo
+
+### /server/version
+
+todo
+
+### /server/map
+
+todo
+
+### /server/maxplayers
+
+todo
+
+
+### /server/numplayers
+
+todo
 
 ### /players
 
