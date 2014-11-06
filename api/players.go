@@ -15,7 +15,7 @@ import (
 //   - Number of Online Players
 //
 // -----
-func HandlePlayers(w http.ResponseWriter, req *http.Request) {
+func HandlePlayers(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -27,8 +27,8 @@ func HandlePlayers(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			NumPlayers    int
@@ -50,7 +50,7 @@ func HandlePlayers(w http.ResponseWriter, req *http.Request) {
 //   - Online Players
 //
 // -----
-func HandleOnlinePlayers(w http.ResponseWriter, req *http.Request) {
+func HandleOnlinePlayers(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -62,8 +62,8 @@ func HandleOnlinePlayers(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			OnlinePlayers []string

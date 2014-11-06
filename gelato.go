@@ -64,7 +64,7 @@ func main() {
 	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		json.WriteJson(json.JsonWriter{
 			Status: 404,
-			Rw:     w,
+			Rw:     api.Wr(w, r),
 			Error:  errors.New("Not Found"),
 		})
 	})

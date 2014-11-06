@@ -19,7 +19,7 @@ import (
 //   - Motd
 //
 // -----
-func HandleServer(w http.ResponseWriter, req *http.Request) {
+func HandleServer(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -31,8 +31,8 @@ func HandleServer(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			GameType   string
@@ -62,7 +62,7 @@ func HandleServer(w http.ResponseWriter, req *http.Request) {
 //   - GameType
 //
 // -----
-func HandleServerGametype(w http.ResponseWriter, req *http.Request) {
+func HandleServerGametype(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -74,8 +74,8 @@ func HandleServerGametype(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			GameType string
@@ -93,7 +93,7 @@ func HandleServerGametype(w http.ResponseWriter, req *http.Request) {
 //   - GameId
 //
 // -----
-func HandleServerGameid(w http.ResponseWriter, req *http.Request) {
+func HandleServerGameid(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -105,8 +105,8 @@ func HandleServerGameid(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			GameId string
@@ -124,7 +124,7 @@ func HandleServerGameid(w http.ResponseWriter, req *http.Request) {
 //   - Version
 //
 // -----
-func HandleServerVersion(w http.ResponseWriter, req *http.Request) {
+func HandleServerVersion(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -136,8 +136,8 @@ func HandleServerVersion(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			Version string
@@ -155,7 +155,7 @@ func HandleServerVersion(w http.ResponseWriter, req *http.Request) {
 //   - Map
 //
 // -----
-func HandleServerMap(w http.ResponseWriter, req *http.Request) {
+func HandleServerMap(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -167,8 +167,8 @@ func HandleServerMap(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			Map string
@@ -186,7 +186,7 @@ func HandleServerMap(w http.ResponseWriter, req *http.Request) {
 //   - MaxPlayers
 //
 // -----
-func HandleServerMaxPlayers(w http.ResponseWriter, req *http.Request) {
+func HandleServerMaxPlayers(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -198,8 +198,8 @@ func HandleServerMaxPlayers(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			MaxPlayers int
@@ -217,7 +217,7 @@ func HandleServerMaxPlayers(w http.ResponseWriter, req *http.Request) {
 //   - NumPlayers
 //
 // -----
-func HandleServerNumPlayers(w http.ResponseWriter, req *http.Request) {
+func HandleServerNumPlayers(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -229,8 +229,8 @@ func HandleServerNumPlayers(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			NumPlayers int
@@ -248,7 +248,7 @@ func HandleServerNumPlayers(w http.ResponseWriter, req *http.Request) {
 //   - Motd
 //
 // -----
-func HandleServerMotd(w http.ResponseWriter, req *http.Request) {
+func HandleServerMotd(w http.ResponseWriter, r *http.Request) {
 	// Query server
 	stat, err := server.Query.Full()
 
@@ -260,8 +260,8 @@ func HandleServerMotd(w http.ResponseWriter, req *http.Request) {
 
 	// Write JSON
 	json.WriteJson(json.JsonWriter{
+		Rw:     Wr(w, r),
 		Status: status,
-		Rw:     w,
 		Error:  err,
 		Body: struct {
 			Motd string
