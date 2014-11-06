@@ -58,7 +58,14 @@ By default, gelato uses the same format for each API point. Every response will 
 ## Table of Contents
 
 * [/server](#server)
+  * [/server/game-type](#server-game-type)
+  * [/server/game-id](#server-game-id)
+  * [/server/version](#server-version)
+  * [/server/map](#server-map)
+  * [/server/max-players](#server-max-players)
+  * [/server/num-players](#server-num-players)
 * [/players](#players)
+  * [/players/online](#players-online)
 
 ### /server
 

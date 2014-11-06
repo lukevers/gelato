@@ -4,6 +4,7 @@ import (
 	"errors"
 	"flag"
 	"github.com/gorilla/mux"
+	"github.com/lukevers/gelato/api"
 	"github.com/lukevers/gelato/config"
 	"github.com/lukevers/gelato/json"
 	"github.com/lukevers/gelato/minecraft"
@@ -39,12 +40,15 @@ func main() {
 	// Create a Minecraft server
 	server = minecraft.Create(config.Host, config.RconPass, config.RconPort, config.QueryPort)
 
+	// Pass our server instance to our API
+	api.SetServer(server)
+
 	// Create HTTP server
 	r := mux.NewRouter()
 
 	// Setup routes
-	r.HandleFunc("/players", HandlePlayers).Methods("GET")
-	r.HandleFunc("/server", HandleServerInfo).Methods("GET")
+	r.HandleFunc("/players", api.HandlePlayers).Methods("GET")
+	r.HandleFunc("/server", api.HandleServer).Methods("GET")
 
 	// Handle Other (all 404s)
 	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
