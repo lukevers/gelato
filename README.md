@@ -86,32 +86,73 @@ The API point `/server` contains general information about the server. Informati
 
 ### /server/gametype
 
-todo
+The API point `/server/gametype` contains the current [gametype]() of the server. The body of the response could be similar to this:
+
+```json
+"Body": {
+	"GameType": "SMP"
+}
+```
 
 ### /server/gameid
 
-todo
+The API point `/server/gameid` contains the current [gameid]() of the server. The body of the response could be similar to this:
+
+```json
+"Body": {
+	"GameId": "MINECRAFT"
+}
+```
 
 ### /server/version
 
-todo
+The API point `/server/version` contains the version of the Minecraft server that is running. The body of the response could be similar to this:
+
+```json
+"Body": {
+	"Version": "1.8"
+}
+```
 
 ### /server/map
 
-todo
+The API point `/server/map` contains the name of the Minecraft server map. The body of the response could be similar to this:
+
+```json
+"Body": {
+	"Map": "world"
+}
+```
 
 ### /server/maxplayers
 
-todo
+The API point `/server/maxplayers` contains the max number of players that the Minecraft server allows. The body of the response could be similar to this:
 
+```json
+"Body": {
+	"MaxPlayers": 20
+}
+```
 
 ### /server/numplayers
 
-todo
+The API point `/server/numplayers` contains the number of currently online players. The body of the response could be siliar to this:
+
+```json
+"Body": {
+	"NumPlayers": 0
+}
+```
 
 ### /server/motd
 
-todo
+The API point `/server/motd` contains the [motd]() for the Minecraft server. The body of the response could be similar to this:
+
+```json
+"Body": {
+	"Motd": "A Minecraft Server"
+}
+```
 
 ### /players
 
