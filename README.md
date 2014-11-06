@@ -81,7 +81,7 @@ If you don't care about `Status` and `Error` and you only want the contents of `
 The API point `/server` contains general information about the server. Information about the max number of players the server allows, and the number of current online players are included in this API point for convenience, but the `/players` API point is player specific and includes a list of current online players. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"GameType": "SMP",
 	"GameId": "MINECRAFT",
 	"Version": "1.8",
@@ -97,7 +97,7 @@ The API point `/server` contains general information about the server. Informati
 The API point `/server/gametype` contains the current [gametype]() of the server. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"GameType": "SMP"
 }
 ```
@@ -107,7 +107,7 @@ The API point `/server/gametype` contains the current [gametype]() of the server
 The API point `/server/gameid` contains the current [gameid]() of the server. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"GameId": "MINECRAFT"
 }
 ```
@@ -117,7 +117,7 @@ The API point `/server/gameid` contains the current [gameid]() of the server. Th
 The API point `/server/version` contains the version of the Minecraft server that is running. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"Version": "1.8"
 }
 ```
@@ -127,7 +127,7 @@ The API point `/server/version` contains the version of the Minecraft server tha
 The API point `/server/map` contains the name of the Minecraft server map. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"Map": "world"
 }
 ```
@@ -137,7 +137,7 @@ The API point `/server/map` contains the name of the Minecraft server map. The b
 The API point `/server/maxplayers` contains the max number of players that the Minecraft server allows. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"MaxPlayers": 20
 }
 ```
@@ -147,7 +147,7 @@ The API point `/server/maxplayers` contains the max number of players that the M
 The API point `/server/numplayers` contains the number of currently online players. The body of the response could be siliar to this:
 
 ```json
-"Body": {
+{
 	"NumPlayers": 0
 }
 ```
@@ -157,7 +157,7 @@ The API point `/server/numplayers` contains the number of currently online playe
 The API point `/server/motd` contains the [motd]() for the Minecraft server. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"Motd": "A Minecraft Server"
 }
 ```
@@ -167,7 +167,7 @@ The API point `/server/motd` contains the [motd]() for the Minecraft server. The
 The API point `/players` contains information about current online players. It also contains information about the max number of players the server allows. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"NumPlayers": 1,
 	"MaxPlayers": 20,
 	"OnlinePlayers": ["player1"] // If no players, this is null
@@ -179,7 +179,7 @@ The API point `/players` contains information about current online players. It a
 The API point `/players/online` contains a string array of current online players. If there are no players online the result is null. The body of the response could be similar to this:
 
 ```json
-"Body": {
+{
 	"OnlinePlayers": ["player1"] // If no players, this is null
 }
 ```
