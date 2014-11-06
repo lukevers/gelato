@@ -55,6 +55,14 @@ By default, gelato uses the same format for each API point. Every response will 
 }
 ```
 
+If you don't care about `Status` and `Error` and you only want the contents of `Body` there's some good news! By appending the query `body=true` to your request you can do that!
+
+```json
+{
+	// Body
+}
+```
+
 ## Table of Contents
 
 * [/server](#server)
