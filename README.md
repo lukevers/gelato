@@ -64,6 +64,7 @@ By default, gelato uses the same format for each API point. Every response will 
   * [/server/map](#servermap)
   * [/server/maxplayers](#servermaxplayers)
   * [/server/numplayers](#servernumplayers)
+  * [/server/motd](#servermotd)
 * [/players](#players)
   * [/players/online](#playersonline)
 
@@ -105,6 +106,10 @@ todo
 
 
 ### /server/numplayers
+
+todo
+
+### /server/motd
 
 todo
 

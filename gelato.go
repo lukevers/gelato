@@ -52,6 +52,13 @@ func main() {
 
 	// Server API Routes
 	r.HandleFunc("/server", api.HandleServer).Methods("GET")
+	r.HandleFunc("/server/gametype", api.HandleServerGametype).Methods("GET")
+	r.HandleFunc("/server/gameid", api.HandleServerGameid).Methods("GET")
+	r.HandleFunc("/server/version", api.HandleServerVersion).Methods("GET")
+	r.HandleFunc("/server/map", api.HandleServerMap).Methods("GET")
+	r.HandleFunc("/server/maxplayers", api.HandleServerMaxPlayers).Methods("GET")
+	r.HandleFunc("/server/numplayers", api.HandleServerNumPlayers).Methods("GET")
+	r.HandleFunc("/server/motd", api.HandleServerMotd).Methods("GET")
 
 	// Handle Other (all 404s)
 	r.NotFoundHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
